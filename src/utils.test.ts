@@ -1,4 +1,5 @@
-import { updateCells, countNeighbors, calcLivingCells, Cell } from "./index";
+import { Cell } from "./index";
+import { countNeighbors, calcLivingCells } from "./utils";
 
 it(`returns a dict of neighbor counts`, () => {
   const neighbors = countNeighbors([
@@ -37,20 +38,4 @@ it(`returns a list of strings of living cells`, () => {
   const livingCells = calcLivingCells(originalLivingCells, neighborCount);
 
   expect(livingCells).toEqual(["-1,1", "0,1", "1,1"]);
-});
-
-it(`returns a list of living cell coords`, () => {
-  const originalLivingCells: Cell[] = [
-    [0, 0],
-    [0, 1],
-    [0, 2],
-  ];
-
-  const newLivingCells = updateCells(originalLivingCells);
-
-  expect(newLivingCells).toEqual([
-    [-1, 1],
-    [0, 1],
-    [1, 1],
-  ]);
 });
