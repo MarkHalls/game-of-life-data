@@ -1,3 +1,3 @@
-import { Cell, update } from "./game";
+import { Cell, next } from "./game";
 
-export { Cell, update };
+export { Cell, next };
