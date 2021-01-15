@@ -1,17 +1,22 @@
 {
-  "name": "game-of-life-data",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "@mark-halls/game-of-life-data",
+  "version": "0.0.1",
+  "description": "A simple game of life data generator and iterator.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mark-halls/game-of-life-data.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "mark-halls",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mark-halls/game-of-life-data/issues"
