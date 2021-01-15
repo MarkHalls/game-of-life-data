@@ -44,7 +44,9 @@ const generateRandomPoint = (game: GameGen, rng: seedrandom.prng): Cell => {
 };
 
 const create = (game: GameGen): Cell[] => {
-  return createSeeded(game, seedrandom.alea().toString());
+  const random = Math.random().toString();
+  console.log(random);
+  return createSeeded(game, random);
 };
 
 const createSeeded = (game: GameGen, seed: string): Cell[] => {
