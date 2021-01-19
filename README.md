@@ -2,8 +2,6 @@
 
 ### A simple library of functions for generating and consuming game of life data.
 
-create, createSeeded, Cell, next
-
 # Getting Started
 
 Generate a random set of game of life xy coordinates.
