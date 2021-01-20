@@ -1,6 +1,6 @@
 {
   "name": "@mark-halls/game-of-life-data",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "A simple game of life data generator and iterator.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
