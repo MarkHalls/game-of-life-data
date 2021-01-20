@@ -34,14 +34,7 @@ You can also create a seeded game for reproducible grids
 ```js
 import { createSeeded, next } from "@mark-halls/game-of-life-data";
 
-// specify the dimensions of our starting data and how many points we want
-const gameSettings = {
-  xMin: 0,
-  xMax: 100,
-  yMin: 0,
-  yMax: 100,
-  density: 0.3, //a number between 0 and 1, 0.3 is 30% coverage
-};
+const gameSettings = { ... };
 
 const seed = "Any String";
 
