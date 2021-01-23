@@ -4,12 +4,17 @@ import { countNeighbors, calcLivingCells } from "./utils";
 
 export type Cell = [number, number];
 
-export type GameGen = {
+export type GameGen = Bounds & Density;
+
+export type Density = {
+  density?: number;
+};
+
+export type Bounds = {
   xMax: number;
   xMin: number;
   yMax: number;
   yMin: number;
-  density: number;
 };
 
 const next = (livingCells: readonly Cell[]): Cell[] => {
@@ -19,6 +24,22 @@ const next = (livingCells: readonly Cell[]): Cell[] => {
   return living.map((cell) => {
     const [x, y] = cell.split(",");
     return [parseInt(x), parseInt(y)];
+  });
+};
+
+const boundedNext = (bounds: Bounds, livingCells: readonly Cell[]): Cell[] => {
+  const living = next(livingCells);
+
+  return living.filter((cell) => {
+    const [x, y] = cell;
+
+    const { xMin, xMax, yMin, yMax } = bounds;
+
+    if (x >= xMin && x <= xMax && y >= yMin && y <= yMax) {
+      return true;
+    } else {
+      return false;
+    }
   });
 };
 
@@ -45,19 +66,23 @@ const generateRandomPoint = (game: GameGen, rng: seedrandom.prng): Cell => {
 
 const create = (game: GameGen): Cell[] => {
   const random = Math.random().toString();
-  console.log(random);
+
   return createSeeded(game, random);
 };
 
 const createSeeded = (game: GameGen, seed: string): Cell[] => {
   const rng = seedrandom.alea(seed);
 
+  if (!game.density) {
+    game.density = 0;
+  }
+
   return naiveRandomCoords(game, rng);
 };
 
 //generates all possible coords, shuffles and returns a truncated list based on density requested.
 const naiveRandomCoords = (game: GameGen, random: seedrandom.prng): Cell[] => {
-  const { xMax, xMin, yMax, yMin, density } = game;
+  const { xMax, xMin, yMax, yMin, density = 0 } = game;
 
   const cellSet: Set<Cell> = new Set();
 
@@ -79,4 +104,11 @@ const naiveRandomCoords = (game: GameGen, random: seedrandom.prng): Cell[] => {
   return cellArr.slice(0, Math.floor(cellArr.length * density));
 };
 
-export { create, createSeeded, next, generateRandomPoint, naiveRandomCoords };
+export {
+  create,
+  createSeeded,
+  next,
+  generateRandomPoint,
+  naiveRandomCoords,
+  boundedNext,
+};

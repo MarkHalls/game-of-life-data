@@ -1,3 +1,3 @@
-import { create, createSeeded, Cell, next } from "./game";
+import { create, createSeeded, Cell, next, boundedNext } from "./game";
 
-export { create, createSeeded, Cell, next };
+export { create, createSeeded, Cell, next, boundedNext };
